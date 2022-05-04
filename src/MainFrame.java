@@ -6,6 +6,10 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import javax.swing.JTable;
+import javax.swing.JScrollPane;
+import javax.swing.table.DefaultTableModel;
+import java.util.Vector;
 
 public class MainFrame extends JFrame {
 
@@ -19,9 +23,15 @@ public class MainFrame extends JFrame {
   private JLabel northLabel  = new JLabel();
   private JButton exitButton;
   private JButton textButton;
+
+  private JTable table = new JTable();
+
+
   
   MainFrame() {
+    this.setTable();
     this.setComponents();
+    this.setMainPanel();
     this.setPanels();
     this.setFrame();
   }
@@ -29,12 +39,28 @@ public class MainFrame extends JFrame {
   private void setFrame() {
     this.setTitle("App");
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    this.setSize(400, 400);
+    this.setSize(500, 550);
     this.setVisible(true);
   }
 
-  private void setPanels() {
+  private void setMainPanel() {
     mainPanel.setBackground(Color.BLUE);
+
+    mainPanel.setLayout(
+      new BorderLayout()
+    );
+
+    //which borderlayout position: WHAT, WHERE
+    mainPanel.add(northPanel, BorderLayout.NORTH);
+    mainPanel.add(eastPanel, BorderLayout.EAST);
+    mainPanel.add(southPanel, BorderLayout.SOUTH);
+    mainPanel.add(westPanel, BorderLayout.WEST);
+    mainPanel.add(centerPanel, BorderLayout.CENTER);
+    this.add(mainPanel);
+
+  }
+
+  private void setPanels() {
     northPanel.setBackground(Color.CYAN);
     eastPanel.setBackground(Color.GREEN);
     southPanel.setBackground(Color.RED);
@@ -46,10 +72,6 @@ public class MainFrame extends JFrame {
       new GridLayout(1, 1)
     );
 
-    mainPanel.setLayout(
-      new BorderLayout()
-    );
-
     southPanel.setLayout(
       new FlowLayout(FlowLayout.RIGHT)
     );
@@ -59,13 +81,7 @@ public class MainFrame extends JFrame {
     southPanel.setSize(400, 40);
     westPanel.setSize(40, 320);
 
-    //which borderlayout position: WHAT, WHERE
-    mainPanel.add(northPanel, BorderLayout.NORTH);
-    mainPanel.add(eastPanel, BorderLayout.EAST);
-    mainPanel.add(southPanel, BorderLayout.SOUTH);
-    mainPanel.add(westPanel, BorderLayout.WEST);
-    mainPanel.add(centerPanel, BorderLayout.CENTER);
-    this.add(mainPanel);
+
   }
 
   private void setComponents() {
@@ -78,20 +94,42 @@ public class MainFrame extends JFrame {
 
     southPanel.add(textButton);
     southPanel.add(exitButton);
+    // centerPanel.add(valami tablet)
   }
 
-    // getter
-    public JButton getExitButton () {
-      return exitButton;
-    }
-  
-    // getter
-    public JButton getTextButton () {
-      return textButton;
-    }
-  
-    // setter
-    public void setNorthLabel (String text) {
-      northLabel.setText(text);
-    }
+  private void setTable() {
+    Vector<Vector<String>> rows = new Vector<>(); 
+    Vector<String> rowitems = new Vector<>();
+    Vector<String> colNames = new Vector<>();
+
+
+    colNames.add("Első");
+    colNames.add("Második");
+    colNames.add("Harmadik");
+
+    DefaultTableModel tableModel = new DefaultTableModel(
+      rows, colNames
+    );
+
+    table.setModel(tableModel);
+
+    JScrollPane tablePane = new JScrollPane(table);
+
+    centerPanel.add(tablePane);
+
+  }
+  // getter
+  public JButton getExitButton() {
+    return exitButton;
+  }
+
+  // getter
+  public JButton getTextButton() {
+    return textButton;
+  }
+
+  // setter
+  public void setNorthLabel(String text) {
+    northLabel.setText(text);
+  }
 }

@@ -7,8 +7,8 @@ public class Controller implements ActionListener{
 
   Controller() {
 
-    addActionEvents();
     start();
+    addActionEvents();
   }
 
   private void addActionEvents() {
