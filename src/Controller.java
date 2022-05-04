@@ -30,6 +30,8 @@ public class Controller implements ActionListener{
 
     mf.getTable().setModel(tableModel);
 
+    getRowsCols();
+
   }
 
   private void setTableHeader() {
@@ -43,17 +45,33 @@ public class Controller implements ActionListener{
 
     mf.getTable().setModel(tableModel);
 
-
   }
 
   private void start() {
     mf = new MainFrame();
     setTableHeader();
 
+    
+
   }
 
   private void exit() {
     System.exit(0);
+  }
+
+  private void getRowsCols() {
+    Integer rows = mf.getTable().getRowCount();
+
+    Integer cols = mf.getTable().getColumnCount();
+
+    String rowsStr = rows.toString();
+
+    String colsStr = cols.toString();
+
+    
+    mf.setNorthLabel("Sorok: " + rowsStr + " Oszlopok: " + colsStr);
+
+
   }
 
   @Override
