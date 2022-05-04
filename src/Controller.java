@@ -10,12 +10,12 @@ public class Controller implements ActionListener{
   Controller() {
 
     start();
-    setTable();
     addActionEvents();
   }
 
   private void addActionEvents() {
     mf.getExitButton().addActionListener(this);
+    mf.getLoadTableButton().addActionListener(this);
   }
 
   private void setTable() {
@@ -45,6 +45,10 @@ public class Controller implements ActionListener{
   public void actionPerformed(ActionEvent event) {
     if ( event.getSource() == mf.getExitButton()) {
       exit();
+    } else if ( event.getSource() == mf.getLoadTableButton()) {
+      setTable();
     }
+
+
   }
 }

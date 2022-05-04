@@ -8,7 +8,6 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
-import javax.swing.table.DefaultTableModel;
 
 public class MainFrame extends JFrame {
 
@@ -21,7 +20,7 @@ public class MainFrame extends JFrame {
 
   private JLabel northLabel  = new JLabel();
   private JButton exitButton;
-  private JButton textButton;
+  private JButton loadBtn;
 
   private JTable table = new JTable();
   
@@ -82,16 +81,15 @@ public class MainFrame extends JFrame {
   }
 
   private void setComponents() {
-    northLabel.setText("Eredeti szöveg");
+    northLabel.setText("Üdv, itt egy tábla");
 
-    textButton = new JButton("Csere");
+    loadBtn = new JButton("Tábla töltése");
     exitButton = new JButton("Kilépés");
 
     northPanel.add(northLabel);
 
-    southPanel.add(textButton);
+    southPanel.add(loadBtn);
     southPanel.add(exitButton);
-    // centerPanel.add(valami tablet)
   }
 
   private void setTable() {
@@ -107,8 +105,8 @@ public class MainFrame extends JFrame {
   }
 
   // getter
-  public JButton getTextButton() {
-    return textButton;
+  public JButton getLoadTableButton() {
+    return loadBtn;
   }
 
   //getter 
