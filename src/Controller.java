@@ -1,5 +1,7 @@
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.table.DefaultTableModel;
+import java.util.Vector;
 
 public class Controller implements ActionListener{
 
@@ -8,11 +10,26 @@ public class Controller implements ActionListener{
   Controller() {
 
     start();
+    setTable();
     addActionEvents();
   }
 
   private void addActionEvents() {
     mf.getExitButton().addActionListener(this);
+  }
+
+  private void setTable() {
+
+    TableModel tm = new TableModel();
+    Vector<Vector<String>> rows = tm.getTableRowData();
+    Vector<String> colNames = tm.getTableHeaderData();
+
+    DefaultTableModel tableModel = new DefaultTableModel(
+      rows, colNames
+    );
+
+    mf.getTable().setModel(tableModel);
+
   }
 
   private void start() {

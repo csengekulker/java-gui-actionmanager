@@ -24,8 +24,6 @@ public class MainFrame extends JFrame {
   private JButton textButton;
 
   private JTable table = new JTable();
-
-
   
   MainFrame() {
     this.setTable();
@@ -98,14 +96,6 @@ public class MainFrame extends JFrame {
 
   private void setTable() {
 
-    TableModel tm = new TableModel();
-
-    DefaultTableModel tableModel = new DefaultTableModel(
-      tm.getTableRowData(), tm.getTableHeaderData()
-    );
-
-    table.setModel(tableModel);
-
     JScrollPane tablePane = new JScrollPane(table);
 
     centerPanel.add(tablePane);
@@ -119,6 +109,11 @@ public class MainFrame extends JFrame {
   // getter
   public JButton getTextButton() {
     return textButton;
+  }
+
+  //getter 
+  public JTable getTable() {
+    return table;
   }
 
   // setter
