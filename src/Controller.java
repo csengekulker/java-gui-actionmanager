@@ -32,8 +32,23 @@ public class Controller implements ActionListener{
 
   }
 
+  private void setTableHeader() {
+    TableModel tm = new TableModel();
+    Vector<Vector<String>> rows = new Vector<>();
+    Vector<String> colNames = tm.getTableHeaderData();
+
+    DefaultTableModel tableModel = new DefaultTableModel(
+      rows, colNames
+    );
+
+    mf.getTable().setModel(tableModel);
+
+
+  }
+
   private void start() {
     mf = new MainFrame();
+    setTableHeader();
 
   }
 
